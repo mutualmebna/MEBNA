@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e2e2ec;
+    color: #18154a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================================
+   ANIMACIONES GLOBALES (Idénticas a Inicio)
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   1. HEADER / NAVBAR (Sincronización total con Inicio)
+   ============================================================ */
+.site-header {
+    width: 100%;
+    background-color: #ffffff;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInDown 0.8s ease forwards;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #18154a;
+    transition: transform 0.3s ease;
+}
+
+.logo img { height: 48px; }
+.logo:hover { transform: scale(1.05); }
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+/*=========================
+    MENÚ DESPLEGABLE
+=========================*/
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    margin-top:15px;
+
+    min-width:190px;
+
+    background:#fff;
+    border-radius:12px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s;
+    z-index:999;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    margin-top:8px;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:14px 20px;
+    color:#1e2a78;
+    text-decoration:none;
+    font-weight:500;
+    transition:.2s;
+}
+
+.dropdown-menu a:hover{
+    background:#1e2a78;
+    color:#fff;
+}
+/* SOLUCIÓN ENLACES: Capturamos los <a> automáticamente sin importar su clase */
+.nav-menu a:not(.btn-contact) {
+    font-size: 16px;
+    font-weight: 500;
+    color: #18154a;
+    position: relative;
+    transition: color 0.3s ease;
+    padding-bottom: 4px; 
+}
+
+/* La línea dorada inferior que se desliza */
+.nav-menu a:not(.btn-contact)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c99700;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:not(.btn-contact):hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.nav-menu a.active {
+    color: #c99700;
+    font-weight: 600;
+}
+
+/* Botón Contacto con su efecto Shimmer de Inicio */
+.btn-contact {
+    background-color: #c99700;
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-contact:hover {
+    background-color: #aa7f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3);
+}
+
+.btn-contact:hover::before {
+    left: 100%;
+}
+
+/* ============================================================
+   2. HERO SERVICIOS (Ancho 100%, altura angosta: 250px)
+   ============================================================ */
+.hero-servicios {
+    width: 100%; 
+    height: 250px; 
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-servicios img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 42, 120, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-overlay h1 {
+    color: white;
+    font-size: 52px;
+    margin-bottom: 12px;
+    animation: fadeInUp 0.8s ease both;
+}
+
+.hero-overlay p {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 750px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* ============================================================
+   3. SECCIÓN SERVICIOS (A todo el ancho de la página)
+   ============================================================ */
+.services-section {
+    width: 100%; 
+    max-width: 100%; 
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    color: #18154a;
+}
+
+.section-title p {
+    font-family: 'Inter', sans-serif;
+    color: #666;
+    margin-top: 10px;
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1300px; 
+}
+
+/* Tarjetas con su tipografía original intacta */
+.service-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 0 1 calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    padding: 20px 20px 10px;
+    color: #18154a;
+    font-weight: 600;
+}
+
+.service-card p {
+    font-family: 'Inter', sans-serif;
+    padding: 0 20px;
+    color: #666;
+    line-height: 1.5;
+    min-height: 90px;
+    flex-grow: 1;
+}
+
+.service-card a {
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+    align-self: flex-end; 
+    padding: 20px;
+    color: #c99700;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.service-card a:hover {
+    color: #aa7f00;
+}
+
+/* ============================================================
+   4. CTA BARRIOS (Caja inferior blindada contra colapsos)
+   ============================================================ */
+.cta-barrios {
+    position: relative;
+    width: 92%;
+    max-width: 1200px;
+    min-height: 380px; /* ALTO MÍNIMO BLINDADO */
+    margin: 20px auto 80px auto;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.cta-barrios img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.cta-overlay {
+    position: relative; /* Clave para que el texto sostenga la caja abierta */
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    background: rgba(30, 42, 120, 0.82);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.cta-overlay h2 {
+    color: white;
+    font-size: 44px;
+    margin-bottom: 15px;
+}
+
+.cta-overlay p {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 720px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cta-overlay .btn-yellow {
+    background: #c99700;
+    color: white !important;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.cta-overlay .btn-yellow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-overlay .btn-yellow:hover {
+    background: #aa7f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3);
+}
+
+.cta-overlay .btn-yellow:hover::before {
+    left: 100%;
+}
+/* ============================================================
+   5. FOOTER / PIE DE PÁGINA REAL
+   ============================================================ */
+.site-footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 25px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.03); /* Sombra muy suave en el borde superior */
+    margin-top: auto; /* Si el contenido es corto, empuja el footer al fondo */
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Lado Izquierdo --- */
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #18154a;
+    letter-spacing: 1px;
+}
+
+.footer-address {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666; 
+    line-height: 1.5;
+}
+
+.footer-address strong {
+    color: #18154a;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* --- Lado Derecho --- */
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #18154a;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-contact-link:hover {
+    transform: translateY(-3px);
+    color: #c99700;
+}
+
+.footer-wp-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.footer-logo {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+}
+/* ============================================================
+   5. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .service-card {
+        flex: 0 1 calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        flex: 0 1 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero-servicios { height: 200px; }
+    .hero-overlay h1 { font-size: 38px; }
+    .cta-overlay h2 { font-size: 32px; }
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-left {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-address {
+        font-size: 15px;
+    }
+}
+

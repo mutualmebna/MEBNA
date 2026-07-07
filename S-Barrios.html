@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEBNA | Barrios</title>
+    
+    <link rel="stylesheet" href="S-Barrio.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">MEBNA</div>
+            <nav class="nav-menu">
+                <a href="InicioMEBNA.html" class="nav-link ">Inicio</a>
+                <div class="dropdown">
+    <a href="Servicios.html" class="nav-link active">
+        Servicios
+    </a>
+
+    <div class="dropdown-menu">
+        <a href="#">Seguros</a>
+        <a href="S-Barrios.html">Loteos</a>
+        <a href="#">Salud</a>
+        <a href="#">Viajes</a>
+    </div>
+</div>
+                <a href="#" class="nav-link">Nosotros</a>
+                <a href="#" class="btn-contact">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-barrios">
+        <img src="imagenes/SBarrios/backBarrios.png" alt="Fondo Barrios MEBNA">
+        <div class="hero-overlay">
+            <h1>Barrios</h1>
+            <p>Loteos privados ubicados en distintos puntos de la provincia</p>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="intro-container">
+            <p>
+                Con mas de 42 años de servicio, mutual MEBNA comenzó su historia en el desarrollo de barrios en el año 1984 cuando se decidió comenzar un proyecto para que todos los afiliados a la mutual pudieran construir su hogar con las mejores oportunidades de financiación. Así es como nace el conocido por su gran estética, Barrio MEBNA, con nombre en honor a la mutual.
+            </p>
+            <p>
+                Con más de 300 casas construidas, se termina el proyecto, dando pie a los nuevos que se encuentran en desarrollo actualmente, Cepas de Junín, Cepas de Bonarda, Ancellotta y Los Álamos. Barrios modernos, pensados especialmente para el público.
+            </p>
+        </div>
+    </section>
+
+    <section class="features-bar">
+        <div class="features-container">
+            <div class="feature-item">
+                <h3>Financiación<br>Propia</h3>
+                <p>Acceso rápido y flexible, con planes adaptados al cliente.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Venta<br>directa</h3>
+                <p>Más transparencia, rapidez y condiciones claras. Es la forma más simple y segura de acceder a tu inversión.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Seguridad<br>privada 24hs</h3>
+                <p>Contamos con el mejor equipo profesional. Tu tranquilidad garantizada, día y noche.</p>
+            </div>
+            <div class="feature-item">
+                <h3>+ 600<br>lotes</h3>
+                <p>La oportunidad perfecta para elegir tu lugar ideal en un entorno exclusivo, seguro y con proyección de crecimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-invest-section">
+        <div class="why-invest-container">
+            <h2>¿Por qué es importante invertir hoy por hoy en desarrollo inmobiliario?</h2>
+            <p class="subtitle">Seguridad patrimonial, valorización sostenida y calidad de vida</p>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>+85%</h4>
+                    <p>Valorización promedio en 5 años</p>
+                </div>
+                <div class="stat-box">
+                    <h4>USD</h4>
+                    <p>Activo dolarizado y protegido</p>
+                </div>
+                <div class="stat-box">
+                    <h4>+40%</h4>
+                    <p>Mayor valor vs. lote abierto</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Alta</h4>
+                    <p>Demanda sostenida post-pandemia</p>
+                </div>
+            </div>
+
+            <div class="data-split-container">
+                <div class="benefits-list">
+                    <ul>
+                        <li><strong>Resguardo del capital:</strong> Activo físico dolarizado, inmune a la devaluación.</li>
+                        <li><strong>Infraestructura incluida:</strong> Calles, luz, agua, seguridad 24 hs desde el día 1.</li>
+                        <li><strong>Plusvalía garantizada:</strong> El barrio crece y el lote se valoriza con él.</li>
+                        <li><strong>Financiación accesible:</strong> Planes en pesos o dólares, con cuotas fijas.</li>
+                        <li><strong>Alta demanda de alquiler:</strong> Posibilidad de construir y generar renta mensual.</li>
+                        <li><strong>Calidad de vida:</strong> Verde, seguridad y comunidad: un activo que se disfruta.</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                    <canvas id="investmentChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="barrios-list-section">
+        <h2>Conocé nuestros barrios</h2>
+        <div class="barrios-list-container">
+            
+            <article class="barrio-card">
+                <div class="barrio-img">
+                    <img src="imagenes/SBarrios/cepasdejunin.png" alt="Cepas de Junín">
+                </div>
+                <div class="barrio-info">
+                    <h3>Cepas de Junín</h3>
+                    <p><a href="https://maps.app.goo.gl/tdWS1xFScntgxHNW8"><strong>Ubicación:</strong></a> Carril del centro entre Santos Lugares y Olivares, Junín, Mendoza, Argentina</p>
+                    <a href="#">Conocé mas →</a>
+                </div>
+            </article>
+
+            <article class="barrio-card">
+                <div class="barrio-img">
+                    <img src="imagenes/SBarrios/ancellota.png" alt="Ancellotta">
+                </div>
+                <div class="barrio-info">
+                    <h3>Ancellotta</h3>
+                    <p><a href="https://maps.app.goo.gl/9FchaRwt3YFH9TnU6"><strong>Ubicación:</strong></a> Carril Robert y Carril Norte, San Martín, Mendoza, Argentina</p>
+                    <a href="#">Conocé mas →</a>
+                </div>
+            </article>
+
+            <article class="barrio-card">
+                <div class="barrio-img">
+                    <img src="imagenes/SBarrios/losalamos.png" alt="Los Álamos">
+                </div>
+                <div class="barrio-info">
+                    <h3>Los Álamos</h3>
+                    <p><a href="https://maps.app.goo.gl/hPXC9AXdrUfHFXoK6"><strong>Ubicación:</strong></a> Calle Los Álamos, Maipú, Mendoza, Argentina</p>
+                    <a href="#">Conocé mas →</a>
+                </div>
+            </article>
+
+            <article class="barrio-card">
+                <div class="barrio-img">
+                    <img src="imagenes/SBarrios/cepasdebonarda.png" alt="Cepas de Bonarda">
+                </div>
+                <div class="barrio-info">
+                    <h3>Cepas de Bonarda</h3>
+                    <p><a href="https://maps.app.goo.gl/hPXC9AXdrUfHFXoK6"><strong>Ubicación:</strong></a>Carril Montecaseros s/n casi Ruta 7, San Martín, Mendoza</p>
+                    <a href="#">Conocé mas →</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-brand">MEBNA</span>
+                <div class="footer-address">
+                    <strong>Oficina Central</strong>
+                    España 535, San Martín, Mendoza,<br>
+                    Argentina
+                </div>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="footer-contact-link">
+                    <img src="imagenes/IcoWps.png" alt="WhatsApp" class="footer-wp-icon">
+                    <span>Contacto</span>
+                </a>
+                <img src="imagenes/LogoMEBNA.png" alt="Sello MEBNA" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('investmentChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Año 1', 'Año 2', 'Año 3', 'Año 4', 'Año 5'],
+                    datasets: [
+                        {
+                            label: 'Lote en barrio privado',
+                            data: [100, 118, 138, 160, 185], // Datos simulados de crecimiento
+                            borderColor: '#1e2a78', // Azul MEBNA
+                            backgroundColor: '#1e2a78',
+                            tension: 0.1,
+                            borderWidth: 3,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#c99700' // Dorado MEBNA
+                        },
+                        {
+                            label: 'Lote abierto / en la calle',
+                            data: [100, 105, 112, 118, 125],
+                            borderColor: '#8aa3c7',
+                            backgroundColor: '#8aa3c7',
+                            borderDash: [5, 5],
+                            tension: 0.1,
+                            borderWidth: 3,
+                            pointRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { family: 'Inter' } } },
+                        title: { display: true, text: 'Valorización estimada base índice 100', font: { family: 'Inter', size: 14 } }
+                    },
+                    scales: {
+                        y: { beginAtZero: false, min: 80, max: 200 }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
