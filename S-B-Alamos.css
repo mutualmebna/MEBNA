@@ -1,0 +1,810 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e2e2ec;
+    color: #18154a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ============================================================
+   ANIMACIONES GLOBALES
+   ============================================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   1. HEADER / NAVBAR (idéntico a Servicios)
+   ============================================================ */
+.site-header {
+    width: 100%;
+    background-color: #ffffff;
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInDown 0.8s ease forwards;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #18154a;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover { transform: scale(1.05); }
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    min-width: 190px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s;
+    z-index: 999;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 8px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 14px 20px;
+    color: #1e2a78;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.dropdown-menu a:hover {
+    background: #1e2a78;
+    color: #fff;
+}
+
+.nav-menu a:not(.btn-contact) {
+    font-size: 16px;
+    font-weight: 500;
+    color: #18154a;
+    position: relative;
+    transition: color 0.3s ease;
+    padding-bottom: 4px;
+}
+
+.nav-menu a:not(.btn-contact)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c99700;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:not(.btn-contact):hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.nav-menu a.active {
+    color: #c99700;
+    font-weight: 600;
+}
+
+.btn-contact {
+    background-color: #c99700;
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-contact:hover {
+    background-color: #aa7f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3);
+}
+
+.btn-contact:hover::before {
+    left: 100%;
+}
+
+/* Botón amarillo reutilizable (CTA) */
+.btn-yellow {
+    background: #c99700;
+    color: white !important;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn-yellow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-yellow:hover {
+    background: #aa7f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3);
+}
+
+.btn-yellow:hover::before {
+    left: 100%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    color: #18154a;
+}
+
+/* ============================================================
+   2. HERO CEPAS DE JUNÍN
+   ============================================================ */
+.hero-cepas {
+    width: 100%;
+    height: 560px;
+    position: relative;
+    margin-bottom: 90px;
+}
+ 
+.hero-cepas > img {
+    border-radius: 0;
+}
+ 
+.hero-cepas > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 42, 120, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 20px 100px;
+}
+ 
+.hero-overlay h1 {
+    color: white;
+    font-size: 52px;
+    margin-bottom: 16px;
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease both;
+}
+ 
+.hero-overlay p {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 26px;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+ 
+
+/* Barra de estadísticas flotante, superpuesta al hero */
+.stats-bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 92%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+    z-index: 2;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+}
+
+.stat-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e2a78;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+/* ============================================================
+   3. UN BARRIO PENSADO PARA CRECER
+   ============================================================ */
+.barrio-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px 20px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barrio-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+.barrio-text {
+    flex: 1 1 45%;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.barrio-text h2 {
+    font-size: 36px;
+    margin-bottom: 18px;
+    color: #18154a;
+}
+
+.barrio-text p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-size: 15px;
+}
+
+.link-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #c99700;
+    transition: color 0.3s ease;
+}
+
+.link-more:hover {
+    color: #aa7f00;
+}
+
+.barrio-image {
+    flex: 1 1 50%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.8s ease 0.15s forwards;
+}
+
+.barrio-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.barrio-features {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 14px 26px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.feature-item img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* ============================================================
+   4. GALERÍA
+   ============================================================ */
+.gallery-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px 20px 20px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+.gallery-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 400px;
+    gap: 20px;
+    height: 400px;
+}
+ 
+.gallery-main {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+}
+ 
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+ 
+.gallery-main:hover img {
+    transform: scale(1.05);
+}
+ 
+.gallery-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+ 
+.gallery-thumb {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+ 
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+ 
+.gallery-thumb:hover img {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   6. BOTONES DE DOCUMENTOS
+   ============================================================ */
+.docs-section {
+    width: 92%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.btn-doc {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #c99700;
+    color: #fff;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    flex: 1 1 320px;
+    justify-content: center;
+    max-width: 420px;
+    transition: all 0.3s ease;
+}
+
+.btn-doc img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.btn-doc:hover {
+    background: #aa7f00;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201, 151, 0, 0.3);
+}
+/* Contenedor principal oscuro */
+.overlay-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    flex-direction: column; /* Apila botones arriba y foto abajo */
+}
+
+/* Barra de botones */
+.controles-zoom {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #111;
+}
+
+.controles-zoom button {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.controles-zoom button:hover {
+    background-color: #ddd;
+}
+
+/* Zona donde vive la imagen */
+.contenedor-imagen {
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite desplazarse si la imagen tiene zoom */
+    text-align: center; /* Centra la imagen horizontalmente */
+}
+
+/* La imagen en sí */
+.contenedor-imagen img {
+    width: 90vw; /* Empieza ocupando el 90% del ancho de la pantalla */
+    height: auto;
+    margin-top: 5vh; /* Da un poco de espacio arriba y abajo */
+    margin-bottom: 5vh;
+    border-radius: 8px;
+    transition: width 0.3s ease; /* Hace que el zoom se vea suave y animado */
+}
+
+/* ============================================================
+   7. CTA FINANCIACIÓN
+   ============================================================ */
+.cta-financiacion {
+    width: 92%;
+    max-width: 1100px;
+    background: #14113a;
+    border-radius: 30px;
+    padding: 55px 30px;
+    text-align: center;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cta-financiacion h2 {
+    color: #fff;
+    font-size: 34px;
+    margin-bottom: 22px;
+}
+
+.cta-financiacion p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.cta-financiacion .btn-yellow {
+    margin-top: 22px;
+}
+
+/* ============================================================
+   8. FOOTER (idéntico a Servicios)
+   ============================================================ */
+.site-footer {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 25px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+    margin-top: auto;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #18154a;
+    letter-spacing: 1px;
+}
+
+.footer-address {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.footer-address strong {
+    color: #18154a;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #18154a;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-contact-link:hover {
+    transform: translateY(-3px);
+    color: #c99700;
+}
+
+.footer-wp-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.footer-logo {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+    .barrio-container {
+        flex-direction: column;
+    }
+
+    .barrio-image img {
+        height: 300px;
+    }
+
+    .gallery-grid {
+        height: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-main img {
+        height: 260px;
+    }
+
+    .gallery-side {
+        flex-direction: row;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-cepas {
+        height: 460px;
+        margin-bottom: 110px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 34px;
+    }
+
+    .stats-bar {
+        flex-direction: column;
+        gap: 18px;
+        padding: 25px;
+    }
+
+    .model-images {
+        grid-template-columns: 1fr;
+    }
+
+    .model-images img {
+        height: 220px;
+    }
+
+    .docs-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-doc {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-address {
+        font-size: 15px;
+    }
+}
