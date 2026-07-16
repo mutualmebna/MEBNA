@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e2e2ec;
+    color: #18154a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+a { text-decoration: none; color: inherit; }
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================
+    HEADER
+================================== */
+.site-header {
+    width: 100%;
+    background-color: #ffffff;
+    min-height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInDown 0.8s ease forwards;
+}
+.header-container { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+
+.logo { display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 600; color: #18154a; transition: transform 0.3s ease; }
+.logo img { height: 48px; } /* ESPACIO IMAGEN: isotipo/logo MEBNA (header) */
+.logo:hover { transform: scale(1.05); }
+
+.dropdown{ position: relative; display: inline-block; }
+.dropdown-menu{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    margin-top:15px; min-width:190px; background:#fff; border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15); overflow:hidden;
+    opacity:0; visibility:hidden; transition:.25s; z-index:999;
+}
+.dropdown:hover .dropdown-menu{ opacity:1; visibility:visible; margin-top:8px; }
+.dropdown-menu a{ display:block; padding:14px 20px; color:#1e2a78; text-decoration:none; font-weight:500; transition:.2s; }
+.dropdown-menu a:hover{ background:#a9cef0; color:#fff; }
+
+.nav-menu a:not(.btn-contact) {
+    font-size: 16px; font-weight: 500; color: #18154a; position: relative;
+    transition: color 0.3s ease; padding-bottom: 4px; 
+}
+.nav-menu a:not(.btn-contact)::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background-color: #c99700; transition: width 0.3s ease;
+}
+.nav-menu a:not(.btn-contact):hover::after,
+.nav-menu a.active::after { width: 100%; }
+.nav-menu a.active { color: #c99700; font-weight: 600; }
+.nav-menu { display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
+.nav-link {
+    font-size: 16px; font-weight: 500; color: #18154a; position: relative;
+    transition: color 0.3s ease; text-decoration: none; display: inline-flex; align-items: center;
+}
+.nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+    background-color: #c99700; transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+.nav-link.active::after { width: 100%; }
+.nav-menu li { display: flex; align-items: center; }
+
+.btn-contact {
+    background-color: #c99700; color: white !important; padding: 10px 25px;
+    border-radius: 50px; font-weight: 600; font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+}
+.btn-contact::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+.btn-contact:hover { background-color: #aa7f00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3); }
+.btn-contact:hover::before { left: 100%; }
+
+/* ==================================
+    HERO 
+================================== */
+.hero-barrios {
+    width: 100%; height: 280px; position: relative; overflow: hidden; background-color: #cfd1e4; 
+}
+.hero-barrios img { width: 100%; height: 100%; object-fit: cover; display: block; } /* ESPACIO IMAGEN: Valijas / Fondo Viajes */
+.hero-overlay { position: absolute; inset: 0; background: rgba(30, 42, 120, 0.65); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+.hero-overlay h1 { color: white; font-size: 54px; margin-bottom: 10px; }
+
+/* ==================================
+    SECCIÓN VIAJES (NUEVAS CLASES)
+================================== */
+.page-container {
+    width: 100%; max-width: 1200px; padding: 40px 20px 80px;
+    display: flex; flex-direction: column; gap: 60px;
+}
+
+/* 1. Partner H&T e Intro */
+.intro-partner-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+}
+.partner-logo-box {
+    background-color: #1e2a78; /* Fondo negro para que coincida con la imagen */
+    border-radius: 12px;
+    height: 150px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 20px; /* Sigue manteniendo un margen interno por si acaso */
+    overflow: hidden; /* Evita que la imagen se desborde por los lados */
+}
+
+.partner-logo-box img { 
+    max-width: 100%; 
+    max-height: 100%; 
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Obliga a la imagen a no cortarse */
+}
+.intro-partner-grid p {
+    font-size: 16px; line-height: 1.6; color: #333; font-weight: 400; text-align: left;
+}
+
+/* 2. Qué te vendemos */
+.what-we-sell h2 { font-size: 32px; color: #1e2a78; margin-bottom: 15px; }
+.what-we-sell p { font-size: 15px; line-height: 1.6; color: #333; font-weight: 400; }
+
+/* 3. Destinos */
+.destinations-section { display: flex; flex-direction: column; gap: 30px; align-items: center; }
+.destinations-title {
+    background-color: #cfd1e4;
+    color: #1e2a78;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-align: center;
+    width: 100%; max-width: 800px;
+}
+.destinations-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;
+}
+.destination-card {
+    background-color: #cfd1e4;
+    border-radius: 20px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.destination-card:hover { transform: translateY(-5px); }
+.destination-card img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
+}
+.destination-card::after {
+    content: ''; position: absolute; inset: 0; background: rgba(30, 42, 120, 0.4); z-index: 2; transition: background 0.3s ease;
+}
+.destination-card:hover::after { background: rgba(30, 42, 120, 0.6); }
+.destination-card h3 {
+    position: relative; z-index: 3; color: #ffffff; font-size: 22px; padding: 0 15px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* 4. Promoción 50% Cash */
+.promo-section { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 30px; align-items: center; }
+.promo-badge {
+    background-color: #d1b15c; /* Color dorado similar al diseño */
+    color: #18154a;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    display: flex; align-items: center; justify-content: center;
+    height: 100%;
+}
+.promo-text { font-size: 16px; line-height: 1.6; color: #333; font-weight: 500; }
+
+/* ==================================
+    CTA (Reutilizado del original)
+================================== */
+.cta-container {
+    background: #4b5ba3; /* Ajustado para parecerse al fondo azul claro del diseño adjunto */
+    border-radius: 25px; padding: 60px 40px; text-align: center; color: #fff;
+}
+.cta-container h2 { font-size: 38px; margin-bottom: 14px; color: #fff; }
+.cta-container p { font-family: 'Inter', sans-serif; font-size: 16px; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 30px; line-height: 1.6; font-weight: 300; }
+.cta-btn {
+    background-color: #c99700; color: #fff; border: none; padding: 14px 40px;
+    border-radius: 50px; font-weight: 600; font-size: 18px; cursor: pointer;
+    transition: all 0.3s ease;
+}
+.cta-btn:hover { background-color: #aa7f00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3); }
+
+/* ==================================
+    FOOTER
+================================== */
+.site-footer { width: 100%; background-color: #ffffff; padding: 25px 0; margin-top: auto; }
+.footer-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+.footer-left { display: flex; align-items: center; gap: 40px; }
+.footer-brand { font-size: 32px; font-weight: 700; color: #18154a; letter-spacing: 1px; }
+.footer-address { font-size: 14px; color: #666; line-height: 1.5; }
+.footer-address strong { color: #18154a; font-weight: 600; display: block; margin-bottom: 2px; }
+.footer-right { display: flex; align-items: center; gap: 30px; }
+.footer-contact-link { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #18154a; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
+.footer-contact-link:hover { color: #c99700; transform: translateY(-3px); }
+.footer-wp-icon { width: 28px; height: 28px; object-fit: contain; } 
+.footer-logo { height: 60px; width: 60px; object-fit: contain; } 
+
+/* ==================================
+    RESPONSIVE
+================================== */
+@media (max-width: 992px) {
+    .nav-menu { gap: 15px; }
+    .intro-partner-grid { grid-template-columns: 1fr; }
+    .promo-section { grid-template-columns: 1fr; }
+    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+    .footer-left, .footer-right { flex-direction: column; gap: 15px; }
+}
+
+@media (max-width: 768px) {
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+    }
+    .destination-card {
+        flex: 0 0 auto;
+        width: 260px;
+        scroll-snap-align: center;
+    }
+    .destinations-title { font-size: 22px; padding: 15px 20px; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 24px; }
+    .nav-link { font-size: 14px; }
+    .btn-contact { padding: 8px 20px; font-size: 14px; }
+    .hero-overlay h1 { font-size: 40px; }
+    .cta-container h2 { font-size: 28px; }
+    .cta-container { padding: 40px 24px; }
+    .promo-badge { font-size: 24px; padding: 20px; }
+}
