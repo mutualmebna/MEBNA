@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e2e2ec;
+    color: #18154a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+a { text-decoration: none; color: inherit; }
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================
+   HEADER
+================================== */
+.site-header {
+    width: 100%;
+    background-color: #ffffff;
+    min-height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideInDown 0.8s ease forwards;
+}
+.header-container { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+
+.logo { display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 600; color: #18154a; transition: transform 0.3s ease; }
+.logo img { height: 48px; } /* ESPACIO IMAGEN: isotipo/logo MEBNA (header) */
+.logo:hover { transform: scale(1.05); }
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    margin-top:15px;
+
+    min-width:190px;
+
+    background:#fff;
+    border-radius:12px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s;
+    z-index:999;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    margin-top:8px;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:14px 20px;
+    color:#1e2a78;
+    text-decoration:none;
+    font-weight:500;
+    transition:.2s;
+}
+
+.dropdown-menu a:hover{
+    background:#a9cef0;
+    color:#fff;
+}
+
+.nav-menu a:not(.btn-contact) {
+    font-size: 16px;
+    font-weight: 500;
+    color: #18154a;
+    position: relative;
+    transition: color 0.3s ease;
+    padding-bottom: 4px; 
+}
+
+/* La línea dorada inferior que se desliza */
+.nav-menu a:not(.btn-contact)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c99700;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:not(.btn-contact):hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.nav-menu a.active {
+    color: #c99700;
+    font-weight: 600;
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    /* Añade estas 3 líneas: */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #18154a;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none; /* Asegura que no haya subrayado nativo */
+    /* Añade estas líneas: */
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c99700;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+.nav-link.active::after {
+    width: 100%;
+}
+.nav-menu li {
+    display: flex;
+    align-items: center;
+}
+.btn-contact {
+    background-color: #c99700;
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.btn-contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+.btn-contact:hover {
+    background-color: #aa7f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 151, 0, 0.3);
+}
+.btn-contact:hover::before { left: 100%; }
+
+/* ==================================
+   HERO SEGUROS
+================================== */
+.hero-barrios {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background-color: #cfd1e4; /* placeholder visible mientras no hay imagen */
+}
+.hero-barrios img { width: 100%; height: 100%; object-fit: cover; display: block; } /* ESPACIO IMAGEN: foto de fondo del hero "Seguros" (manos con pluma/documento, como en la referencia) */
+.hero-overlay { position: absolute; inset: 0; background: rgba(30, 42, 120, 0.75); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+.hero-overlay h1 { color: white; font-size: 64px; margin-bottom: 10px; }
+.hero-overlay p { font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.9); font-size: 20px; max-width: 800px; }
+
+/* ==================================
+   INTRODUCCIÓN
+================================== */
+.intro-section { width: 100%; max-width: 1200px; padding: 60px 20px; }
+.intro-container { display: grid; grid-template-columns: 0.9fr 1.6fr; gap: 50px; align-items: center; }
+.intro-container p { font-size: 18px; line-height: 1.6; color: #333; font-weight: 300; text-align: justify; }
+
+.aseguradora-logo { display: flex; align-items: center; gap: 16px; }
+.aseguradora-logo img { height: 200px; border-radius: 20px; } /* ESPACIO IMAGEN: logo de la aseguradora aliada (ej. Sancor Seguros) */
+.aseguradora-mark {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #18154a;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700;
+    flex-shrink: 0;
+} /* fallback si no hay logo en imagen: iniciales sobre círculo */
+.aseguradora-text { line-height: 1.15; font-family: 'Playfair Display', serif; }
+.aseguradora-text .l1 { color: #18154a; font-weight: 700; font-size: 24px; letter-spacing: 1px; }
+.aseguradora-text .l2 { color: #c99700; font-weight: 700; font-size: 24px; letter-spacing: 1px; }
+
+/* ==================================
+   COBERTURAS
+================================== */
+.coverage-section { width: 100%; max-width: 1200px; padding: 0 20px 80px; }
+.coverage-section h2 {
+    font-size: 40px; color: #1e2a78; text-align: center; margin-bottom: 45px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.service-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(30,42,120,0.12);
+}
+.service-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(201, 151, 0, 0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.service-icon img { width: 26px; height: 26px; object-fit: contain; } /* ESPACIO IMAGEN: icono de cada cobertura (Auto, Hogar, Moto, Vida, Movilidad, Accidentes Personales) */
+.service-card span { font-weight: 600; font-size: 16px; color: #18154a; }
+
+/* ==================================
+   CTA
+================================== */
+.cta-section { width: 100%; max-width: 1200px; padding: 0 20px 80px; }
+.cta-container {
+    background: #1e2a78;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    color: #fff;
+}
+.cta-container h2 { font-size: 38px; margin-bottom: 14px; color: #fff; }
+.cta-container p { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(255,255,255,0.85); max-width: 560px; margin: 0 auto 30px; line-height: 1.6; font-weight: 300; }
+.cta-btn {
+    background-color: #c99700;
+    color: #18154a;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.cta-btn:hover { background-color: #aa7f00; color: #fff; transform: translateY(-2px); }
+
+/* ==================================
+   FOOTER
+================================== */
+.site-footer { width: 100%; background-color: #ffffff; padding: 25px 0; margin-top: auto; }
+.footer-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+.footer-left { display: flex; align-items: center; gap: 40px; }
+.footer-brand { font-size: 32px; font-weight: 700; color: #18154a; letter-spacing: 1px; }
+.footer-address { font-size: 14px; color: #666; line-height: 1.5; }
+.footer-address strong { color: #18154a; font-weight: 600; display: block; margin-bottom: 2px; }
+.footer-right { display: flex; align-items: center; gap: 30px; }
+.footer-contact-link { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #18154a; font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
+.footer-contact-link:hover { color: #c99700; transform: translateY(-3px); }
+.footer-wp-icon { width: 28px; height: 28px; object-fit: contain; } /* ESPACIO IMAGEN: icono de WhatsApp */
+.footer-logo { height: 60px; width: 60px; object-fit: contain; } /* ESPACIO IMAGEN: sello/logo redondo MEBNA (footer) */
+
+/* ==================================
+   RESPONSIVE
+================================== */
+@media (min-width: 1440px) {
+    .header-container, .hero-container, .about-container, .services-section,
+    .contact-section, .footer-container { max-width: 1320px; }
+}
+
+@media (max-width: 992px) {
+    .nav-menu { gap: 15px; }
+    .intro-container { grid-template-columns: 1fr; text-align: center; }
+    .aseguradora-logo { justify-content: center; }
+    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+    .footer-left, .footer-right { flex-direction: column; gap: 15px; }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+    }
+    .service-card {
+        flex: 0 0 auto;
+        width: 260px;
+        scroll-snap-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 24px; }
+    .nav-link { font-size: 14px; }
+    .btn-contact { padding: 8px 20px; font-size: 14px; }
+    .hero-overlay h1 { font-size: 34px; }
+    .hero-overlay p { font-size: 15px; }
+    .coverage-section h2 { font-size: 26px; }
+    .cta-container h2 { font-size: 26px; }
+    .cta-container { padding: 40px 24px; }
+    .footer-brand { font-size: 26px; }
+}
